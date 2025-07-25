@@ -8,7 +8,7 @@
 	},
 	"devDependencies": {
 		"@guardian/eslint-config": "11.0.0",
-		"@guardian/prettier": "5.0.0",
+		"@guardian/prettier": "8.0.1",
 		"@guardian/tsconfig": "1.0.0",
 		"@types/jest": "29.5.14",
 		"eslint": "9.31.0",
