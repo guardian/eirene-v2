@@ -1,0 +1,64 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  setup:
+    runs-on: ubuntu-latest
+
+    permissions:
+      # Allow GitHub to request an OIDC JWT ID token, for exchange with AWS Security Token Service (STS)
+      # See https://docs.github.com/en/actions/deployment/security-hardening-your-deployments/configuring-openid-connect-in-amazon-web-services#updating-your-github-actions-workflow
+      id-token: write
+
+      # Required for `actions/checkout`
+      contents: read
+
+      # Required to comment on a pull request
+      pull-requests: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: '.tool-versions'
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Format
+        run: pnpm format:check
+
+      - name: Lint
+        run: pnpm lint
+
+      - name: Test
+        run: pnpm test
+
+      - name: Synth CDK
+        run: pnpm --filter cdk run synth
+
+      - uses: guardian/actions-riff-raff@v4
+        with:
+          app: eirene-v2
+          roleArn: ${{ secrets.GU_RIFF_RAFF_ROLE_ARN }}
+          githubToken: ${{ secrets.GITHUB_TOKEN }}
+          configPath: packages/cdk/cdk.out/riff-raff.yaml
+          contentDirectories: |
+            eirene-v2:
+              - packages/cdk/dist
+            cdk.out:
+              - packages/cdk/cdk.out/EireneV2-euwest-1-DEV.template.json
+              - packages/cdk/cdk.out/EireneV2-euwest-1-CODE.template.json
+              - packages/cdk/cdk.out/EireneV2-euwest-1-PROD.template.json

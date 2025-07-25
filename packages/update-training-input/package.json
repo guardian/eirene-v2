@@ -1,0 +1,20 @@
+{
+	"name": "update-training-input",
+	"main": "index.js",
+	"scripts": {
+		"build": "esbuild src/index.ts --bundle --external:@aws-sdk --platform=node --outdir=dist",
+		"dev": "tsx localRun.ts"
+	},
+	"devDependencies": {
+		"@types/node": "22.15.30",
+		"esbuild": "^0.25.8",
+		"tsx": "^4.20.3",
+		"typescript": "5.1.6"
+	},
+	"dependencies": {
+		"@aws-sdk/client-s3": "^3.850.0",
+		"@aws-sdk/client-secrets-manager": "^3.848.0",
+		"@aws-sdk/client-ssm": "^3.849.0",
+		"zod": "^4.0.10"
+	}
+}
