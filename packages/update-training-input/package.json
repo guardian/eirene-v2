@@ -6,7 +6,7 @@
 		"dev": "tsx localRun.ts"
 	},
 	"devDependencies": {
-		"@types/node": "22.15.30",
+		"@types/node": "24.1.0",
 		"tsx": "^4.20.3",
 		"typescript": "5.1.6"
 	},
