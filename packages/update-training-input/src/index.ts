@@ -1,6 +1,6 @@
-import { discussionApiClient } from './discussion';
-import { getConfig } from './config';
 import { PutObjectCommand, S3Client } from '@aws-sdk/client-s3';
+import { getConfig } from './config';
+import { discussionApiClient } from './discussion';
 
 export const handler = async () => {
 	const config = await getConfig();

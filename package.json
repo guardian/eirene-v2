@@ -5,7 +5,7 @@
 		"test:update": "jest -u",
 		"format": "prettier --write .",
 		"format:check": "prettier --check .",
-		"lint": "eslint --no-error-on-unmatched-pattern"
+		"lint": "eslint . --ignore-pattern **/dist"
 	},
 	"devDependencies": {
 		"@guardian/eslint-config": "11.0.0",
