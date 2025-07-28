@@ -13,6 +13,7 @@
 		"aws-cdk-lib": "2.200.1",
 		"constructs": "10.4.2",
 		"source-map-support": "0.5.20",
+		"ts-node": "10.9.2",
 		"typescript": "5.1.6"
 	}
 }
