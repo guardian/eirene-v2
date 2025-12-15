@@ -7,14 +7,14 @@
 	},
 	"devDependencies": {
 		"@types/node": "22.15.30",
-		"esbuild": "^0.25.8",
-		"tsx": "^4.20.3",
-		"typescript": "5.1.6"
+		"esbuild": "^0.27.1",
+		"tsx": "^4.21.0",
+		"typescript": "5.9.3"
 	},
 	"dependencies": {
-		"@aws-sdk/client-s3": "^3.850.0",
-		"@aws-sdk/client-secrets-manager": "^3.848.0",
-		"@aws-sdk/client-ssm": "^3.849.0",
+		"@aws-sdk/client-s3": "^3.948.0",
+		"@aws-sdk/client-secrets-manager": "^3.950.0",
+		"@aws-sdk/client-ssm": "^3.948.0",
 		"zod": "^4.0.10"
 	}
 }
